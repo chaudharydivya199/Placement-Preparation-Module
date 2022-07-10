@@ -1,0 +1,20 @@
+class Solution {
+    public int maxProfit(int[] p)
+    {
+        int n=p.length,max1=0,max2=0;
+        int ans[]=new int[n];
+        Stack<Integer> st=new Stack<>();
+        for(int i=n-1;i>=0;i--)
+        {
+            if(max1<p[i])
+            {
+             max1=p[i];
+            }
+            else
+            {
+                max2=Math.max(max2,max1-p[i]);
+            }
+        }
+        return max2;
+    }
+}

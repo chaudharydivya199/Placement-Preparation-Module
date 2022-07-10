@@ -1,0 +1,44 @@
+class Solution {
+    public void nextPermutation(int[] nums) 
+    {
+         int i1=-1,i2=-1;
+        for(int i=nums.length-2;i>=0;i--)
+        {
+            if(nums[i]<nums[i+1])
+            {
+                i1=i;
+                break;
+            }
+        }
+        if(i1==-1)
+        {
+            rev(nums,0,nums.length-1);
+            return;
+        }
+        for(int i=nums.length-1;i>=0;i--)
+        {
+            if(nums[i]>nums[i1])
+            {
+                i2=i;
+                break;
+            }
+        }
+        int t=nums[i1];
+        nums[i1]=nums[i2];
+        nums[i2]=t;
+        
+        rev(nums,i1+1,nums.length-1);
+        
+    }
+    public void rev(int a[],int i,int j)
+    {
+        while(i<j)
+        {
+            int temp=a[i];
+            a[i]=a[j];
+            a[j]=temp;
+            i++;
+            j--;
+        }
+    }
+}
